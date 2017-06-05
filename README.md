@@ -3,7 +3,7 @@ buildkite-phabricator-dev
 
 A Dockerized environment for developing and testing our [buildkite-patches branch of Phabricator](https://github.com/buildkite/phabricator/tree/buildkite-patches).
 
-## Getting Started
+## Get Started
 
 ```bash
 # Clone our patches branch and other phabricator libs
@@ -21,14 +21,21 @@ echo '8081' > '~/.pow/phabricator'
 open http://phabricator.dev/
 ```
 
-## Quick Setup
+Next we've got to setup and configure Phabricator with a user, repository, build plan and herald rule.
+
+## 1. Setup a user
 
 * Name your admin user 'test'
 * Set a VCS password: http://phabricator.dev/settings/user/test/page/vcspassword/ This will be used to test `git clone` commands on the command line
+
+## 2. Create a Repository
+
 * Create a new Git repository called 'Test': http://phabricator.dev/diffusion/edit/form/default/?vcs=git
 * Activate the repository: http://phabricator.dev/diffusion/1/manage/basics/
 
-## First git commit
+## 3. Clone, commit and push
+
+Next step is to clone the repository to `test` inside this repository's checkout path (don't worry, `test` is gitignore'd):
 
 ```bash
 $ git clone http://phabricator.dev/diffusion/1/test.git
@@ -48,7 +55,7 @@ To http://phabricator.dev/diffusion/1/test.git
  * [new branch]      master -> master
 ```
 
-## Setup Arcanist
+## 4. Setup Arcanist
 
 The `arc` command line tool is used to create a Diff for code review. 
 
@@ -92,7 +99,7 @@ arc diff
 
 You'll now have your first diff: http://phabricator.dev/D1
 
-## Setup a Harbormaster Build Plan
+## 5. Setup a Harbormaster Build Plan
 
 This is what triggers a Buildkite build.
 
@@ -107,7 +114,7 @@ Now you add a build step:
 * Org name: `xxx`
 * Pipeline name: `xxx` (lowercase slug)
 
-### Create a Herald rule to trigger build plans
+## 6. Create a Herald Rule
 
 Herald is used to trigger build plans automatically when new diff revisions are submitted:
 
@@ -125,7 +132,7 @@ Next we create one for when commits are pushed:
 
 Now you can create another arc diff, or push a build, and see it trigger harbourmaster builds.
 
-## Send webhooks to Request Bin
+## Helpful development snippets
 
 If you want to send the Buildkite webhooks to https://requestb.in/, modify the HarbormasterBuildkiteBuildStepImplementation.php like so, and then hit "Restart Build" in Phabricator:
 
@@ -142,8 +149,6 @@ If you want to send the Buildkite webhooks to https://requestb.in/, modify the H
      $data_structure = array(
        'commit' => $object->getBuildkiteCommit(),
 ```
-
-## Helpful development snippets
 
 Getting a bash prompt to run phabricator commands:
 
