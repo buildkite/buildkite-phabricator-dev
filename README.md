@@ -132,6 +132,12 @@ Next we create one for when commits are pushed:
 
 Now you can create another arc diff, or push a build, and see it trigger harbourmaster builds.
 
+## 7. View and restart builds
+
+In Harbormaster you'll be able to see the builds triggered. You can restart them to resend the payloads to Buildkite.
+
+http://phabricator.dev/harbormaster
+
 ## Helpful development snippets
 
 If you want to send the Buildkite webhooks to https://requestb.in/, modify the HarbormasterBuildkiteBuildStepImplementation.php like so, and then hit "Restart Build" in Phabricator:
