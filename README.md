@@ -1,7 +1,7 @@
 buildkite-phabricator-dev
 =========================
 
-A Dockerized environment for developing and testing our [buildkite-patches branch of Phabricator](https://github.com/buildkite/phabricator/tree/buildkite-support).
+A Dockerized environment for developing and testing our [buildkite-patches branch of Phabricator](https://github.com/buildkite/phabricator/tree/buildkite-patches).
 
 ## Getting Started
 
