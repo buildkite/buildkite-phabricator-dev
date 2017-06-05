@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  phabricator:
+    build: .
+    depends_on:
+      - "db"
+    ports:
+      - "8081:80"
+    volumes:
+      - "./phabricator:/opt/phabricator"
+      - "./local.json:/opt/phabricator/conf/local/local.json"
+      - "./arcanist:/opt/arcanist"
+      - "./libphutil:/opt/libphutil"
+      - "repo:/var/repo"
+    environment:
+      - MYSQL_HOST=db
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - "db_data:/var/lib/mysql"
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=
+      - MYSQL_DATABASE=phabricator
+
+volumes:
+  db_data:
+  repo:

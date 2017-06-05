@@ -1,0 +1,10 @@
+{
+  "storage.default-namespace": "phabricator",
+  "mysql.host": "db",
+  "mysql.user": "root",
+  "mysql.pass": "password",
+  "phabricator.base-uri": "http://phabricator.dev/",
+  "diffusion.allow-http-auth": true,
+  "phd.user": "root",
+  "environment.append-paths": ["/usr/lib/git-core"]
+}
