@@ -6,18 +6,22 @@ A Dockerized environment for developing and testing our [buildkite-patches branc
 ## Get Started
 
 ```bash
-# Clone our patches branch and other phabricator libs
+# Clone this repo
+git clone https://github.com/buildkite/buildkite-phabricator-dev.git
+cd buildkite-phabricator-dev
+
+# Inside, clone our patches branch and other phabricator libs
 git clone -b buildkite-patches https://github.com/buildkite/phabricator.git
 git clone https://github.com/phacility/libphutil.git
 git clone https://github.com/phacility/arcanist.git
 
-# Start it up (will bootstrap the DB)
+# Start it all up (it will automatically bootstrap the DB)
 docker-compose up
 
 # Setup up Pow, or somesuch localhost proxy
 echo '8081' > '~/.pow/phabricator'
 
-# Give it a go (see Quick Setup for next instructions)
+# Give it a go (don't create a user! Read the next step)
 open http://phabricator.dev/
 ```
 
